@@ -39,6 +39,12 @@ repos:
         additional_dependencies:
           - "prettier@3.3.3"
           - "@prettier/plugin-xml@3.4.1"
+    # CSV standardization with CleverCSV
+  - repo: https://github.com/alan-turing-institute/CleverCSV-pre-commit
+    rev: v0.8.2 # use >= v0.8.2 (v0.8.1 is broken per README)
+    hooks:
+      - id: clevercsv-standardize
+        files: \.csv$
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.6.0
     hooks:
@@ -59,5 +65,3 @@ repos:
         exclude: /README\.rst$|^docs/.*\.rst$
       - id: check-symlinks
       - id: check-xml
-      - id: mixed-line-ending
-        args: ["--fix=lf"]
